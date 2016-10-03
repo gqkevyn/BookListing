@@ -25,18 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private static final String GB_REQUEST_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
     private BookAdapter mAdapter;
-
     Button mSearch;
-    ArrayList<Book> bookArrayList;
+    ArrayList<Book> books;
 
     /**
      * Save the value of the bookArrayList variable
      */
-    public void onSaveInstanceState(Bundle savedState) {
-        super.onSaveInstanceState(savedState);
-        // Save the value of bookArrayList variable
-        savedState.putSerializable("myKey", bookArrayList);
-
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("books", books);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -56,12 +53,11 @@ public class MainActivity extends AppCompatActivity {
         // so the list can be populated in the user interface
         bookListView.setAdapter(mAdapter);
 
-        // Check if savedInstanceState contains saved data
-        if (savedInstanceState != null) {
-            // Restore saved values
-            ArrayList<Book> results = (ArrayList<Book>) savedInstanceState.getSerializable("myKey");
-            mAdapter.addAll(results);
-            mAdapter.notifyDataSetChanged();
+        if(savedInstanceState == null || !savedInstanceState.containsKey("books")) {
+            books = new ArrayList<>();
+        }
+        else {
+            books = savedInstanceState.getParcelableArrayList("books");
         }
 
         mSearch.setOnClickListener(new View.OnClickListener(){
