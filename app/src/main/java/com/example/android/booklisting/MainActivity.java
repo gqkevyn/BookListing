@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(LOG_TAG,"TEST: Main Activity onCreate() called");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
