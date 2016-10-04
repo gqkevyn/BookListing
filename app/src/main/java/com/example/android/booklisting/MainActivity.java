@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     BookAdapter mAdapter;
     Button mSearch;
+    String searchUrl;
 
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
                 if (searchText.isEmpty()){
                     Toast.makeText(MainActivity.this, "Nothing to search", Toast.LENGTH_SHORT).show();
                 }
-                GB_REQUEST_URL += searchText + "&maxResults=15";
+                searchUrl = GB_REQUEST_URL + searchText + "&maxResults=15";
             }
         });
 
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
                 startActivity(websiteIntent);
             }
         });
+
+
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -119,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public Loader<List<Book>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new BookLoader(this, GB_REQUEST_URL);
+        return new BookLoader(this, searchUrl);
     }
 
     @Override
