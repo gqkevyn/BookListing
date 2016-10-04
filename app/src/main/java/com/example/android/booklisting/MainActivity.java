@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
-            Log.i(LOG_TAG,"TEST: calling initLoader() ...");
+            Log.i(LOG_TAG,"TEST: calling initLoader()");
             loaderManager.initLoader(BOOK_LOADER_ID, null, this);
         } else {
             // Otherwise, display error
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<Book>> loader, List<Book> books) {
-        Log.i(LOG_TAG,"TEST: onLoadFinished() called ...");
+        Log.i(LOG_TAG,"TEST: onLoadFinished() called");
         // Hide loading indicator because the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
