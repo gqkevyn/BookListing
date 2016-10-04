@@ -30,6 +30,7 @@ public final class QueryUtils {
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     public static List<Book> fetchBookData(String requestUrl){
+
         // Create URL object
         URL url = createUrl(requestUrl);
 

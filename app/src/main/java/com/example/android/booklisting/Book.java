@@ -30,7 +30,7 @@ public class Book {
     }
 
     /**
-     * Returns the website URL to find more information about the earthquake.
+     * Returns the website URL to find more information about the book.
      */
     public String getUrl() {
         return mUrl;
