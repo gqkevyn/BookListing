@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     private static final int BOOK_LOADER_ID = 1;
 
+    String searchUrl;
     BookAdapter mAdapter;
     Button mSearch;
-    String searchUrl;
+
 
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
